@@ -20,8 +20,8 @@ else:
     st.error("Error: The file 'income_map.html' was not found. Please ensure it is in the same directory as this script.")
 
 # --- Display a static table as a Leaderboard ---
-st.header("Top Performing States (Leaderboard)")
-st.markdown("This is a small, static table displaying key metrics. It's great for summaries or rankings.")
+st.header("Top Income States (Leaderboard)")
+st.markdown("This is a small, static table displaying key metrics")
 
 # Sample data for a small, static table
 leaderboard_data = {
