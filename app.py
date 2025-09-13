@@ -16,7 +16,7 @@ else:
     st.error("Error: The file 'income_map.html' was not found. Please ensure it is in the same directory as this script.")
 # --- Display a static table as a Leaderboard ---
 st.header("Top Income States (Leaderboard)")
-st.markdown("This is a small, static table displaying key metrics. It's great for summaries or rankings.")
+st.markdown("This static table displaying summaries top income static rankings ")
 
 # Sample data for a small, static table
 leaderboard_data = {
@@ -25,24 +25,3 @@ leaderboard_data = {
     'Median Household Income': ['$90,559', '$84,907', '$75,157', '$84,247', '$89,703'],
     'Change': ['+2.5%', '+1.8%', '+1.2%', '+2.1%', '+1.9%']
 }
-
-# Create a DataFrame from the data
-#df = pd.DataFrame(leaderboard_data)
-
-# Display the static table using st.table
-# Note: st.table is best for small, static data as it's not interactive
-#st.table(df)
-
-# --- Display a table of random numbers ---
-#st.header("Random Number Table Example")
-#st.markdown("This table demonstrates a static table with randomly generated data.")
-
-# Create a DataFrame with random data
-#df = pd.DataFrame(
-#    rng(0).standard_normal(size=(10, 5)),
- #   columns=("col %d" % i for i in range(5)),
-#)
-
-#st.table(df)
-
-#st.info("The tables above are static representations of data. For larger, interactive datasets, consider using `st.dataframe`.")
