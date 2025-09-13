@@ -1,19 +1,7 @@
-#import pandas as pd
-#import folium
-#import streamlit as st
-
-# Set the page layout to wide (full width)
-#st.set_page_config(layout="wide")
-#with open("./income_map.html", "r", encoding="utf-8") as f:
-  #  map_html = f.read()
-
-# Add a title for the page
-st.title("State Income Map through the US")
-st.components.v1.html(map_html, height=600, width=0,scrolling=True)
 import pandas as pd
-import folium
 import streamlit as st
 import os
+from numpy.random import default_rng as rng
 
 # Set the page layout to wide (full width)
 st.set_page_config(layout="wide")
@@ -31,6 +19,17 @@ if os.path.exists("./income_map.html"):
 else:
     st.error("Error: The file 'income_map.html' was not found. Please ensure it is in the same directory as this script.")
 
+# --- Display a static table as a Leaderboard ---
+st.header("Top Performing States (Leaderboard)")
+st.markdown("This is a small, static table displaying key metrics. It's great for summaries or rankings.")
+
+# Sample data for a small, static table
+leaderboard_data = {
+    'Rank': [1, 2, 3, 4, 5],
+    'State': ['Massachusetts', 'California', 'New York', 'Washington', 'New Jersey'],
+    'Median Household Income': ['$90,559', '$84,907', '$75,157', '$84,247', '$89,703'],
+    'Change': ['+2.5%', '+1.8%', '+1.2%', '+2.1%', '+1.9%']
+}
 
 # Create a DataFrame from the data
 df = pd.DataFrame(leaderboard_data)
@@ -39,29 +38,16 @@ df = pd.DataFrame(leaderboard_data)
 # Note: st.table is best for small, static data as it's not interactive
 st.table(df)
 
-# --- Display a table of Markdown strings ---
-st.header("Markdown Table Example")
-st.markdown("This table demonstrates how `st.table` can render Markdown syntax directly within cells.")
+# --- Display a table of random numbers ---
+st.header("Random Number Table Example")
+st.markdown("This table demonstrates a static table with randomly generated data.")
 
-# Sample data with Markdown strings
-markdown_data = {
-    'Feature': ['**Feature A**', '_Feature B_', '~~Feature C~~'],
-    'Description': [
-        'A key feature with a description.',
-        'This feature is a good example.',
-        'An example of a strike-through text.',
-    ],
-    'Link': [
-        '[Learn More](https://www.streamlit.io)',
-        'Check out [this link](https://docs.streamlit.io).',
-        'No link here.',
-    ]
-}
+# Create a DataFrame with random data
+df = pd.DataFrame(
+    rng(0).standard_normal(size=(10, 5)),
+    columns=("col %d" % i for i in range(5)),
+)
 
-# Create a DataFrame from the Markdown data
-df_markdown = pd.DataFrame(markdown_data)
-
-# Display the Markdown table using st.table
-st.table(df_markdown)
+st.table(df)
 
 st.info("The tables above are static representations of data. For larger, interactive datasets, consider using `st.dataframe`.")
