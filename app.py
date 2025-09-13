@@ -31,23 +31,4 @@ leaderboard_data = {
     'Change': ['+2.5%', '+1.8%', '+1.2%', '+2.1%', '+1.9%']
 }
 
-# Create a DataFrame from the data
-df = pd.DataFrame(leaderboard_data)
 
-# Display the static table using st.table
-# Note: st.table is best for small, static data as it's not interactive
-st.table(df)
-
-# --- Display a table of random numbers ---
-st.header("Random Number Table Example")
-st.markdown("This table demonstrates a static table with randomly generated data.")
-
-# Create a DataFrame with random data
-df = pd.DataFrame(
-    rng(0).standard_normal(size=(10, 5)),
-    columns=("col %d" % i for i in range(5)),
-)
-
-st.table(df)
-
-st.info("The tables above are static representations of data. For larger, interactive datasets, consider using `st.dataframe`.")
